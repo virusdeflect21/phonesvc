@@ -1,6 +1,7 @@
 # phonesvc
 
 [![Release](https://img.shields.io/github/v/release/virusdeflect21/phonesvc?color=brightgreen)](https://github.com/virusdeflect21/phonesvc/releases/latest)
+[![CI](https://github.com/virusdeflect21/phonesvc/actions/workflows/ci.yml/badge.svg)](https://github.com/virusdeflect21/phonesvc/actions/workflows/ci.yml)
 [![Platform](https://img.shields.io/badge/platform-Windows%20x64-0078D6?logo=windows&logoColor=white)](https://github.com/virusdeflect21/phonesvc/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 ![Rust](https://img.shields.io/badge/rust-1.99%2B-orange?logo=rust&logoColor=white)
@@ -47,6 +48,10 @@ no installer, no PATH changes.
 | `rawprogram*.xml`         | ✅     | Qualcomm firmware folder parsing.                   |
 | Device profiles           | ✅     | 40+ across vendors + generic eMMC/UFS fallbacks.    |
 | Real-hardware flashing    | ⚠️     | Implemented; verified on mock transports, not yet on a physical 9008 device. |
+
+## Screenshot
+
+![phonesvc GUI](docs/screenshot.png)
 
 ## What it does
 

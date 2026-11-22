@@ -13,6 +13,10 @@ phonesvc-*.zip
 # Keep the dist README though
 !/dist/README.md
 
+# Vendored third-party runtime (libusb, LGPL-2.1+) is committed on purpose
+# so release builds don't need network downloads. See THIRD_PARTY_NOTICES.md.
+!/vendor/
+
 # Editor / OS cruft
 .vscode/
 .idea/
