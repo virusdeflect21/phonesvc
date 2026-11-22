@@ -5,6 +5,7 @@
 
 # Packaged distribution (rebuilt on demand; binaries not committed)
 phonesvc-windows-x64.zip
+phonesvc-*.zip
 /dist/*.exe
 /dist/*.dll
 /dist/*.zip

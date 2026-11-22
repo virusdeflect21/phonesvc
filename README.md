@@ -1,5 +1,10 @@
 # phonesvc
 
+[![Release](https://img.shields.io/github/v/release/virusdeflect21/phonesvc?color=brightgreen)](https://github.com/virusdeflect21/phonesvc/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows%20x64-0078D6?logo=windows&logoColor=white)](https://github.com/virusdeflect21/phonesvc/releases)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
+![Rust](https://img.shields.io/badge/rust-1.99%2B-orange?logo=rust&logoColor=white)
+
 Independent phone-servicing toolkit for Windows — **Qualcomm EDL (9008)** and
 related partition operations, built entirely on open, documented protocols.
 
@@ -11,6 +16,37 @@ windowed GUI app, and a scriptable CLI.
 > suite. Real-hardware flashing against a physical 9008 device has **not** been
 > proven yet. Treat sector sizes, partition layouts, and device profiles as
 > starting points, not authoritative data.
+
+## Download
+
+Grab the latest prebuilt Windows x64 bundle from the
+[**Releases**](https://github.com/virusdeflect21/phonesvc/releases/latest) page:
+`phonesvc-vX.Y.Z-windows-x64.zip`. Unzip and keep the three files together —
+no installer, no PATH changes.
+
+| File               | Purpose                                                   |
+|--------------------|-----------------------------------------------------------|
+| `phonesvc.exe`     | **The app** — double-click to open the window (x64 GUI).  |
+| `phonesvc-cli.exe` | Scriptable command-line version of the same toolkit.      |
+| `libusb-1.0.dll`   | x64 libusb, loaded at runtime. Keep it next to the exes.  |
+
+## At a glance
+
+| Capability                | Status | Notes                                              |
+|---------------------------|:------:|----------------------------------------------------|
+| USB device enumeration    | ✅     | Runtime-loaded libusb; no link-time C dependency.   |
+| Qualcomm EDL (9008) detect | ✅    | VID/PID match + EDL badge in the GUI.              |
+| Sahara identity readback  | ✅     | Hello / version / image-id from a 9008 device.     |
+| Sahara programmer upload  | ✅     | Streams `prog_firehose*.elf` to the device.        |
+| Firehose read/write/erase | ✅     | Sector-addressed bulk ops.                          |
+| Firehose peek / poke      | ✅     | Read/write device memory by address.               |
+| Firehose reset / storage  | ✅     | `reset` + `get-storage-info`.                       |
+| GPT / MBR parsing         | ✅     | From a dumped disk image.                           |
+| Android sparse images     | ✅     | Parse + raw expansion.                              |
+| Samsung PIT parsing       | ✅     | From a PIT dump.                                    |
+| `rawprogram*.xml`         | ✅     | Qualcomm firmware folder parsing.                   |
+| Device profiles           | ✅     | 40+ across vendors + generic eMMC/UFS fallbacks.    |
+| Real-hardware flashing    | ⚠️     | Implemented; verified on mock transports, not yet on a physical 9008 device. |
 
 ## What it does
 
