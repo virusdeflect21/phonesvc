@@ -1,0 +1,28 @@
+[package]
+name = "phonesvc"
+version = "0.1.0"
+edition = "2021"
+description = "Independent phone-servicing toolkit (Qualcomm EDL / ADB / Fastboot) - Rust"
+
+[lib]
+name = "phonesvc"
+path = "src/lib.rs"
+
+[[bin]]
+name = "phonesvc"
+path = "src/gui_main.rs"
+
+[[bin]]
+name = "phonesvc-cli"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+libloading = "0.8"
+anyhow = "1"
+hex = "0.4"
+eframe = { version = "0.29", default-features = false, features = ["glow", "default_fonts"] }
+rfd = "0.15"
+
+[profile.release]
+opt-level = 2

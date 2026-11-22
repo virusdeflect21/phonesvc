@@ -1,0 +1,24 @@
+# Rust build output
+/target
+**/*.rs.bk
+*.pdb
+
+# Packaged distribution (rebuilt on demand; binaries not committed)
+phonesvc-windows-x64.zip
+/dist/*.exe
+/dist/*.dll
+/dist/*.zip
+
+# Keep the dist README though
+!/dist/README.md
+
+# Editor / OS cruft
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local notes / secrets
+*.local
+.env
