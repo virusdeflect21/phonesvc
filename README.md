@@ -141,8 +141,9 @@ Sector numbers and addresses accept decimal or `0x`-prefixed hex.
 - **Transport trait** — Sahara and Firehose operate over any `Transport`, so the
   protocol logic is unit-tested against an in-memory mock (no hardware needed).
 - **Runtime libusb** — `usb.rs` binds only the handful of libusb functions used,
-  loaded via `libloading`. The EDL interface is assumed to be interface 0 with
-  bulk endpoints OUT `0x02` / IN `0x81` (overridable in `open_transport`).
+  loaded via `libloading`. It reads the active USB configuration and selects an
+  interface with a bulk IN/OUT pair instead of assuming interface 0 or fixed
+  endpoint numbers.
 - **Two-phase device session** — Sahara uploads the Firehose programmer, then
   the same link speaks Firehose XML. `service.rs` ties these together so the GUI
   and CLI share identical wire behaviour.
@@ -151,7 +152,9 @@ Sector numbers and addresses accept decimal or `0x`-prefixed hex.
 
 - Windows x64.
 - For raw-USB operations, a libusb-compatible driver bound to the device
-  (e.g. Zadig / WinUSB). `devices` / `qc detect` only need the DLL present.
+  (e.g. WinUSB). `devices` / `qc detect` only need the DLL present. The current
+  transport does not support the COM port exposed by Qualcomm's QDLoader driver;
+  it does not change or replace device drivers automatically.
 
 ## Scope & safety
 

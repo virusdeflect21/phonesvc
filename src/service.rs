@@ -15,10 +15,6 @@ use crate::firehose::{FirehoseResponse, FirehoseSession};
 use crate::sahara::SaharaSession;
 use crate::transport::Transport;
 
-/// Default Qualcomm EDL bulk endpoints (interface 0).
-pub const DEFAULT_OUT_EP: u8 = 0x02;
-pub const DEFAULT_IN_EP: u8 = 0x81;
-
 /// Run the Sahara handshake and stream `programmer` to the device.
 ///
 /// On success the device is running the Firehose programmer and the same link

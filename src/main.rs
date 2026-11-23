@@ -56,7 +56,7 @@ fn cmd_qc_info() -> Result<()> {
     if edl.is_empty() {
         anyhow::bail!("no Qualcomm EDL (9008) device found");
     }
-    let mut t = usb.open_transport(usb::QUALCOMM_VID, usb::EDL_PID, 0x02, 0x81)?;
+    let mut t = usb.open_transport(&edl[0])?;
     t.set_read_timeout_ms(5000);
     let mut s = sahara::SaharaSession::new(&mut t);
     let hello = s.wait_hello()?;
@@ -209,7 +209,7 @@ where
     if edl.is_empty() {
         anyhow::bail!("no Qualcomm EDL (9008) device found");
     }
-    let mut t = usbctx.open_transport(usb::QUALCOMM_VID, usb::EDL_PID, service::DEFAULT_OUT_EP, service::DEFAULT_IN_EP)?;
+    let mut t = usbctx.open_transport(&edl[0])?;
     t.set_read_timeout_ms(10000);
     let summary = service::upload_programmer(&mut t, &prog)?;
     println!(
